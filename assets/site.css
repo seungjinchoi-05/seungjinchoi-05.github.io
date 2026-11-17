@@ -1,0 +1,28 @@
+/* 공통 토큰 + GNB — 포트폴리오 홈과 프로젝트 웹 쇼잉이 함께 씁니다.
+   1920px 피그마 프레임 기준 수치를 --u(1px@1920) 배율로 옮겼습니다. */
+:root{
+  --u:calc(min(100vw,1920px) / 1920);
+  --pad:max(20px,calc(120 * var(--u)));
+  --ink:#000;
+  --display:"Zalando Sans Expanded","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --kr:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --latin:"Inter","Helvetica Neue",Arial,sans-serif;
+  --gnb-h:max(64px,calc(106 * var(--u)));
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--kr);word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img{display:block}
+h1,h2,h3,p,dl,dd,ul{margin:0;padding:0}
+:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* GNB: SEUNGJIN 23px · x120 y52 / 메뉴 17px mono · y56 / 구분선 y105 */
+.gnb{position:fixed;z-index:50;top:0;left:0;right:0;height:var(--gnb-h);background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.gnb__in{height:100%;margin:0 var(--pad);display:flex;justify-content:space-between;align-items:flex-start;padding-top:max(20px,calc(52 * var(--u)));border-bottom:1px solid rgba(0,0,0,.2)}
+.gnb__brand{font:500 max(18px,calc(23 * var(--u)))/normal var(--display);color:#000;white-space:nowrap}
+.gnb__menu{display:flex;gap:max(20px,calc(161 * var(--u)));margin-top:max(3px,calc(4 * var(--u)));font:400 max(13px,calc(17 * var(--u)))/normal var(--mono);list-style:none}
+.gnb a:hover{text-decoration:underline;text-underline-offset:5px}

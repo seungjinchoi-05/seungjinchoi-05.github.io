@@ -3,292 +3,355 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>SEUNGJIN Portfolio</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>SEUNGJIN — Interaction &amp; Experience Design Portfolio</title>
+<meta name="description" content="최승진의 인터랙션·경험 디자인 포트폴리오. About Me, Projects, Contact.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SEUNGJIN — Portfolio">
+<meta property="og:description" content="Interaction &amp; Experience Design">
+<meta property="og:url" content="https://seungjinchoi-05.github.io/">
+<link rel="canonical" href="https://seungjinchoi-05.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Gothic+A1:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:wght@500&family=IBM+Plex+Mono:wght@400&family=Noto+Sans+KR:wght@400;700&family=Inter:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-/* Layout: 조리개가 열리며 작업 그리드로 들어가는 원스크롤. 그리드는 헤어라인으로 나눈 4단 */
-:root{
-  color-scheme:light;
-  --paper:#fbfbfa; --ink:#0c0c0c; --mid:#6f6f6c; --faint:#dcdcd9; --line:#e2e2df; --slot:#f0f0ee;
-  --display:"Jost","Avenir Next","Century Gothic","Gothic A1",sans-serif;
-  --body:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
-  --mono:"DM Mono","SFMono-Regular",Consolas,monospace;
-  --gut:max(clamp(16px,6.6vw,96px),env(safe-area-inset-left,0px));
-  --gutr:max(clamp(16px,6.6vw,96px),env(safe-area-inset-right,0px));
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.title{font:500 max(40px,calc(88 * var(--u)))/1.068 var(--display);letter-spacing:-.06em;white-space:nowrap}
+.title .arrow{font-family:var(--kr);font-weight:400;letter-spacing:0;display:inline-block;transform:translateY(.08em)}
+
+/* ── 표지 (43:1783) ─────────────────────────── */
+.cover{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#fff}
+.field{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--fs,1));pointer-events:none}
+.field>*{position:absolute}
+.rings{left:0;top:0;width:1920px;height:1080px}
+.blade{left:620px;top:200px;width:680px;height:680px;transform-origin:50% 50%;will-change:transform,opacity}
+.cross{left:-3px;top:-1px;width:1920px;height:1080px;opacity:.7}
+.cross img{position:absolute}
+.particle{border-radius:50%}
+.cover__title{position:absolute;z-index:2;left:var(--pad);top:max(96px,calc(171 * var(--u)))}
+.discipline{position:absolute;z-index:2;left:var(--pad);bottom:max(28px,calc(83 * var(--u)));font:400 max(12px,calc(17 * var(--u)))/1.53 var(--mono);letter-spacing:.05em;color:rgba(0,0,0,.61)}
+.cover__word{position:absolute;z-index:2;right:var(--pad);bottom:max(112px,calc(138 * var(--u)));display:grid;justify-items:end}
+.cover__word span{grid-area:1/1}
+.cover__word .w-lab{opacity:0}
+.top-btn{position:fixed;z-index:40;right:max(16px,calc(117 * var(--u)));bottom:max(16px,calc(29 * var(--u)));width:48px;height:48px;border:1px solid #000;border-radius:50%;background:#fff;display:grid;place-items:center;font:400 16px/1 var(--kr);color:rgba(0,0,0,.92);opacity:.7;transition:opacity .2s}
+.top-btn:hover{opacity:1}
+
+/* ── About Me (75:1383) ─────────────────────── */
+.about{padding:max(104px,calc(171 * var(--u))) var(--pad) max(80px,calc(187 * var(--u)))}
+.about__body{display:grid;grid-template-columns:405fr 586fr 689fr;margin-top:max(40px,calc(122 * var(--u)))}
+.about__photo{width:100%;aspect-ratio:405/506;object-fit:cover;background:#e6e6e6}
+.about__quote{align-self:end;padding-left:calc(20 * var(--u));margin-bottom:calc(-1 * var(--u));font:400 max(15px,calc(20 * var(--u)))/1.45 var(--kr);letter-spacing:-.02em;color:rgba(42,43,48,.7)}
+.cv{margin-top:calc(70 * var(--u))}
+.cv__group+.cv__group{margin-top:max(36px,calc(63 * var(--u)))}
+.cv__label{font:400 max(15px,calc(18 * var(--u)))/1.44 var(--mono);letter-spacing:.01em;margin-bottom:max(10px,calc(16 * var(--u)))}
+.cv__row{display:grid;grid-template-columns:249fr 440fr;align-items:center}
+.cv__row+.cv__row{margin-top:max(4px,calc(7 * var(--u)))}
+.cv__row dt{font:400 max(13px,calc(16 * var(--u)))/1.56 var(--mono);color:rgba(42,43,48,.82)}
+.cv__row dd{font:400 max(15px,calc(18 * var(--u)))/1.89 var(--kr);letter-spacing:-.02em;color:#121212}
+
+/* ── Projects (64:251) ──────────────────────── */
+.projects{padding:max(104px,calc(171 * var(--u))) 0 max(72px,calc(107 * var(--u))) var(--pad);overflow:hidden}
+.projects .title{margin-left:calc(2 * var(--u))}
+.projects__body{display:grid;grid-template-columns:calc(283 * var(--u)) minmax(0,1fr);margin-top:max(32px,calc(90 * var(--u)))}
+.list-btn{display:flex;justify-content:space-between;align-items:center;width:max(132px,calc(180 * var(--u)));height:max(40px,calc(47 * var(--u)));padding:0 max(14px,calc(17 * var(--u)));border:1px solid #000;border-radius:50px;background:#fff;font:400 max(14px,calc(17.333 * var(--u)))/1 var(--kr);color:rgba(0,0,0,.92);transition:background .2s,color .2s}
+.list-btn:hover,.list-btn[aria-pressed="true"]{background:#000;color:#fff}
+.track-wrap{margin-top:calc(8 * var(--u))}
+.track{--cu:calc(max(280px, calc(405 * var(--u))) / 405);display:flex;gap:calc(20 * var(--cu));overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-left:0;padding:0 var(--pad) calc(28 * var(--cu)) 0;margin-bottom:calc(-28 * var(--cu));scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.track.is-list{flex-wrap:wrap;overflow:visible;scroll-snap-type:none}
+.arrows{display:flex;gap:max(20px,calc(22 * var(--u)));margin-top:max(16px,calc(22 * var(--u)))}
+.arrows button{font:400 max(26px,calc(33.333 * var(--u)))/1.2 var(--kr);color:rgba(0,0,0,.92)}
+.arrows button:disabled{color:rgba(0,0,0,.25);cursor:default}
+.track.is-list~.arrows{visibility:hidden}
+
+/* 카드 405×548 · 커버 405×245 */
+.card{flex:none;position:relative;width:calc(405 * var(--cu));height:calc(548 * var(--cu));border-radius:calc(36 * var(--cu));background:#f9f9f9;overflow:hidden;scroll-snap-align:start}
+.card__cover{position:relative;height:calc(245 * var(--cu));border-radius:calc(12 * var(--cu));background:#000;overflow:hidden}
+.ph{position:absolute;left:0;right:0;top:calc(43.78 * var(--cu));height:calc(157.43 * var(--cu));color:rgba(255,255,255,.83);
+  background-image:linear-gradient(to right,rgba(255,255,255,.3) .5px,transparent .5px),linear-gradient(to bottom,rgba(255,255,255,.3) .5px,transparent .5px);
+  background-size:calc(11.113 * var(--cu)) calc(11.113 * var(--cu))}
+.ph--top{top:0;height:calc(160.67 * var(--cu))}
+.ph__c1{left:calc(230.85 * var(--cu));top:calc(11.02 * var(--cu));width:calc(129.09 * var(--cu));height:calc(129.09 * var(--cu))}
+.ph__c2{left:calc(241.87 * var(--cu));top:calc(22.04 * var(--cu));width:calc(107.05 * var(--cu));height:calc(107.05 * var(--cu))}
+.ph img{position:absolute}
+.ph__rule{position:absolute;left:calc(7.41 * var(--cu));top:calc(144.78 * var(--cu));width:calc(390.18 * var(--cu));height:1px;background:currentColor;opacity:.5}
+.ph__tag{position:absolute;left:calc(7.41 * var(--cu));top:calc(6.79 * var(--cu));font:400 calc(3.396 * var(--cu))/normal var(--mono);white-space:nowrap}
+.ph__name{position:absolute;left:calc(7.41 * var(--cu));top:calc(62.97 * var(--cu));font:500 calc(24.078 * var(--cu))/1.3 var(--display);white-space:nowrap}
+.ph__name--kr{font:700 calc(24.573 * var(--cu))/1.3 var(--kr)}
+.card__body{padding:calc(25 * var(--cu)) calc(22 * var(--cu)) 0}
+.card__name{font:700 calc(33.333 * var(--cu))/1.44 var(--kr);color:rgba(0,0,0,.92);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card__rule{height:1px;background:rgba(0,0,0,.11);margin:calc(22 * var(--cu)) calc(-22 * var(--cu)) 0}
+.card__desc{margin-top:calc(20 * var(--cu));max-width:calc(300 * var(--cu));height:calc(62 * var(--cu));font:400 calc(21.333 * var(--cu))/calc(31 * var(--cu)) var(--kr);color:rgba(0,0,0,.67);overflow:hidden}
+.card__tag{margin-top:calc(23 * var(--cu));font:400 calc(14.667 * var(--cu))/calc(19 * var(--cu)) var(--mono);color:rgba(0,0,0,.67);text-transform:uppercase}
+.card__go{position:absolute;left:calc(22 * var(--cu));top:calc(492 * var(--cu));width:calc(42 * var(--cu));height:calc(42 * var(--cu));border-radius:50%;background:rgba(0,0,0,.05);display:grid;place-items:center;font:400 calc(21.333 * var(--cu))/1 var(--kr);color:rgba(0,0,0,.92);transition:background .2s,color .2s}
+a.card__go:hover{background:#000;color:#fff}
+.card__go[aria-disabled="true"]{color:rgba(0,0,0,.3);cursor:not-allowed}
+.card--malmoi{background:rgba(243,243,243,.5)}
+
+/* ── Contact (75:2372) ──────────────────────── */
+.contact{display:grid;grid-template-columns:1275fr 361fr 44fr;align-items:start;padding:max(80px,calc(216 * var(--u))) var(--pad) max(72px,calc(101 * var(--u)))}
+.contact__name{font:300 max(13px,calc(17 * var(--u)))/1.3 var(--latin);letter-spacing:.03em;margin-bottom:calc(9 * var(--u))}
+.contact__links{margin-top:calc(42 * var(--u));display:flex;flex-direction:column;gap:max(18px,calc(25 * var(--u)));font:400 max(16px,calc(19 * var(--u)))/1.3 var(--latin)}
+.contact__links b{display:block;font-weight:500;margin-bottom:calc(8 * var(--u))}
+.contact__links .mail{color:rgba(0,0,0,.73)}
+.contact__links a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact__links .be{font-weight:500}
+.contact__arrow{margin-top:calc(104 * var(--u));width:max(32px,calc(44 * var(--u)));transition:transform .25s}
+.contact__arrow img{width:100%;height:auto}
+.contact__arrow:hover{transform:translate(3px,-3px)}
+
+/* ── 모바일 ───────────────────────────────── */
+@media (max-width:900px){
+  .about__body{grid-template-columns:1fr;max-width:560px}
+  .about__photo{max-width:320px}
+  .about__quote{padding:20px 0 0}
+  .cv{margin-top:48px}
+  .cv__row{grid-template-columns:132px 1fr;align-items:baseline}
+  .cv__row dd{line-height:1.6}
+  .cv__row dt{white-space:nowrap}
+  .projects__body{grid-template-columns:1fr}
+  .list-btn{margin-bottom:24px}
+  .contact{grid-template-columns:1fr auto}
+  .contact__links{grid-column:1;margin-top:40px}
+  .contact__arrow{grid-column:2;grid-row:2;align-self:end;margin-top:0}
 }
-*{box-sizing:border-box}
-html{background:var(--paper)}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.7 var(--body);word-break:keep-all;overflow-x:clip}
-h1,h2,h3,p{margin:0}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-:focus-visible{outline:1.5px solid currentColor;outline-offset:4px}
-
-/* 내비: 조리개 위를 지날 때 반전 */
-.nav{position:fixed;z-index:20;top:0;left:0;right:0;display:grid;grid-template-columns:1fr repeat(3,auto);gap:clamp(18px,9vw,150px);padding-top:calc(env(safe-area-inset-top,0px) + 26px);padding-bottom:14px;padding-left:var(--gut);padding-right:var(--gutr);color:#fff;mix-blend-mode:difference;font:400 13px/1 var(--display);letter-spacing:.2em;pointer-events:none}
-.nav a{pointer-events:auto}
-.nav a:hover{text-decoration:underline;text-underline-offset:6px}
-
-/* 인트로 */
-.pin{height:260vh;position:relative}
-.hero{position:sticky;top:0;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:var(--paper);isolation:isolate}
-#iris{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-.reveal{position:absolute;inset:0;display:grid;place-items:center;text-align:center;opacity:0;z-index:0}
-.reveal b{font:200 clamp(64px,13vw,200px)/1 var(--display);letter-spacing:-.03em}
-.copy{position:absolute;z-index:2;left:var(--gut);top:50%;transform:translateY(-50%);color:#fff;mix-blend-mode:difference;will-change:opacity,transform}
-h1{font:200 clamp(72px,10vw,164px)/.95 var(--display);letter-spacing:-.025em;margin-left:-.04em}
-.role{display:grid;grid-template-columns:clamp(30px,4vw,56px) auto;gap:clamp(14px,2.4vw,36px);align-items:center;margin-top:clamp(18px,2vw,28px);font:300 clamp(12px,1.05vw,15px)/1.4 var(--display);letter-spacing:.3em}
-.role i{display:block;height:1px;background:currentColor}
-.tag{margin:12px 0 0 calc(clamp(30px,4vw,56px) + clamp(14px,2.4vw,36px));font:300 clamp(14px,1.15vw,17px)/1.6 var(--display);letter-spacing:.04em;opacity:.62}
-
-.stops{position:absolute;z-index:3;left:var(--gut);right:var(--gutr);bottom:calc(env(safe-area-inset-bottom,0px) + 26px);display:flex;flex-wrap:wrap;align-items:baseline;gap:8px clamp(12px,2vw,28px);color:#fff;mix-blend-mode:difference;font:300 13px/1.4 var(--mono)}
-.stops button{padding:6px 2px;opacity:.5;transition:opacity .2s}
-.stops button:hover,.stops button:focus-visible,.stops button.on{opacity:1}
-.read{flex:1 1 100%;min-height:1.4em;font-family:var(--body);font-size:13px}
-
-/* 작업 그리드 */
-.works{padding-block:clamp(56px,7vw,110px) 0}
-.works-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding-left:var(--gut);padding-right:var(--gutr);padding-bottom:clamp(24px,3vw,44px)}
-.works-head h2{font:200 clamp(52px,7.4vw,118px)/1 var(--display);letter-spacing:-.025em}
-.works-head span{font:300 clamp(24px,3vw,46px)/1 var(--display)}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
-.card{position:relative;display:flex;flex-direction:column;min-width:0;padding:clamp(14px,1.5vw,22px) clamp(14px,1.5vw,22px) clamp(24px,2.6vw,38px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);outline-offset:-4px}
-.card:nth-child(4n){border-right:0}
-.num{font:400 clamp(60px,6.4vw,104px)/1 var(--display);letter-spacing:-.03em;color:var(--faint);transition:color .3s}
-.card:hover .num,.card:focus-within .num{color:var(--ink)}
-.fstop{display:flex;justify-content:space-between;gap:10px;margin-top:clamp(56px,8vw,128px);font:300 12px/1.4 var(--mono);color:var(--mid)}
-.card h3{font:300 clamp(23px,1.95vw,30px)/1.18 var(--display);letter-spacing:-.01em;margin-top:8px;min-height:2.36em;font-family:var(--display),var(--body)}
-.slot{position:relative;aspect-ratio:16/9;background:var(--slot);overflow:hidden;margin-top:14px;display:grid;place-items:center;color:var(--mid);font-size:12px}
-.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.card:hover .slot img{transform:scale(1.035)}
-.slot canvas{position:absolute;inset:0;width:100%;height:100%}
-.slot span{opacity:0;transition:opacity .25s}
-.card:hover .slot span,.card:focus-within .slot span{opacity:1}
-.kind{margin-top:14px;font-weight:500;font-size:14px}
-.desc{margin-top:4px;color:var(--mid);font-size:14px;line-height:1.65}
-
-.open::after{content:"";position:absolute;inset:0}
-.open:focus-visible{outline:0}.open:focus-visible::after{outline:1.5px solid var(--ink);outline-offset:-5px}
-.fig{position:relative;z-index:1;align-self:flex-start;display:inline-flex;gap:8px;margin-top:14px;padding:7px 14px;border:1px solid var(--ink);border-radius:99px;font-size:13px;line-height:1.4;transition:background .2s,color .2s}
-.fig:hover{background:var(--ink);color:var(--paper)}
-
-/* 2뎁스 상세 */
-.det{padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
-.det-top{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
-.det-side{padding:clamp(14px,1.5vw,22px);border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-width:0}
-.det-side .num{color:var(--ink)}
-.det-side a,.det-side span{font:300 13px/1.4 var(--mono);color:var(--mid)}
-.det-side a:hover{color:var(--ink)}
-.det-main{grid-column:span 3;padding:clamp(14px,1.5vw,22px) var(--gutr) clamp(28px,3.4vw,52px) clamp(14px,1.5vw,22px);min-width:0}
-.det-main h1{font-size:clamp(46px,7.2vw,118px);line-height:1.04;margin:0;letter-spacing:-.025em}
-.det-main .kind{margin-top:clamp(22px,3vw,44px);font-size:16px}
-.det-main .desc{font-size:16px;max-width:52ch}
-.det-main .fig{font-size:15px;padding:10px 20px;margin-top:22px}
-.det-stage{position:relative;height:clamp(320px,58vw,820px);background:var(--slot);display:grid;place-items:center;color:var(--mid);font-size:14px;overflow:hidden}
-.det-stage canvas,.det-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.det-long{position:relative;background:var(--slot)}
-.det-long img{display:block;width:100%;height:auto}
-.det-long canvas{position:absolute;top:0;left:0;width:100%;height:min(100vh,56.25vw)}
-.det-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1px solid var(--line)}
-.det-nav a{min-width:0;padding:clamp(18px,2.4vw,36px) clamp(14px,1.5vw,22px);font:300 clamp(20px,2.4vw,36px)/1.2 var(--display);transition:background .2s}
-.det-nav a:hover{background:var(--slot)}
-.det-nav a+a{border-left:1px solid var(--line);text-align:right}
-.det-nav small{display:block;margin-bottom:8px;font:300 12px/1.4 var(--mono);color:var(--mid)}
-@media (max-width:640px){.det-top{grid-template-columns:minmax(0,1fr)}.det-side{border-right:0;border-bottom:1px solid var(--line);flex-direction:row;align-items:flex-end}.det-main{grid-column:auto;padding-left:var(--gut)}}
-
-/* 다음 단계 섹션 */
-.rest{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-.rest>section{min-width:0;padding-block:clamp(36px,5vw,72px);padding-left:var(--gut);padding-right:var(--gutr);border-bottom:1px solid var(--line);scroll-margin-top:60px}
-.rest>section+section{border-left:1px solid var(--line);padding-left:clamp(14px,3vw,44px)}
-.rest h2{font:200 clamp(38px,4.6vw,72px)/1 var(--display);letter-spacing:-.02em}
-.rest p{margin-top:12px;color:var(--mid)}
-footer{display:flex;justify-content:space-between;gap:16px;padding-block:22px;padding-left:var(--gut);padding-right:var(--gutr);font:300 12px/1.4 var(--mono);color:var(--mid)}
-
-@media (max-width:1040px){
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .card:nth-child(4n){border-right:1px solid var(--line)}
-  .card:nth-child(2n){border-right:0}
-}
-@media (max-width:640px){
-  .nav{grid-template-columns:1fr repeat(3,auto);gap:12px;font-size:10px;letter-spacing:.12em}
-  .copy{top:auto;bottom:150px;transform:none}
-  .stops{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between}
-  .read{grid-column:1/-1;min-height:2.8em}
-  .rest{grid-template-columns:minmax(0,1fr)}
-  .rest>section+section{border-left:0;padding-left:var(--gut)}
-  .tag{margin-left:0}
-  .fstop{margin-top:44px}
-  .card h3{min-height:0}
-}
-@media (max-width:460px){
-  .grid{grid-template-columns:minmax(0,1fr)}
-  .card{border-right:0!important}
+@media (max-width:560px){
+  .cv__row{grid-template-columns:1fr}
+  .cv__row dd{margin-top:2px}
+  .cv__row+.cv__row{margin-top:14px}
+  .title{font-size:min(40px,10.4vw)}
 }
 </style>
-
-<nav class="nav" aria-label="주요 메뉴">
-  <a href="#top">SEUNGJIN</a><a href="#profile">PROFILE</a><a href="#works">WORKS</a><a href="#contact">CONTACT</a>
-</nav>
-
-<main id="top">
-  <div class="pin" id="pin">
-    <section class="hero" aria-label="인트로">
-      <div class="reveal" id="reveal" aria-hidden="true"><b>Works</b></div>
-      <canvas id="iris" aria-hidden="true"></canvas>
-      <div class="copy" id="copy">
-        <h1>Portfolio</h1>
-        <div class="role"><i></i><span>DIGITAL MEDIA DESIGNER</span></div>
-        <p class="tag">Designing visual experiences<br>across digital media.</p>
-      </div>
-      <div class="stops" id="stops" role="group" aria-label="조리개 값별 프로젝트"><div class="read" id="read" aria-live="polite"></div></div>
-    </section>
+</head>
+<body>
+<header class="gnb">
+  <div class="gnb__in">
+    <a class="gnb__brand" href="#top">SEUNGJIN</a>
+    <nav aria-label="주요 메뉴"><ul class="gnb__menu">
+      <li><a href="#about">PROFILE</a></li>
+      <li><a href="#projects">WORKS</a></li>
+    </ul></nav>
   </div>
+</header>
 
-  <section class="works" id="works">
-    <div class="works-head"><h2>Works</h2><span>08</span></div>
-    <div class="grid" id="grid"></div>
+<main>
+  <!-- 표지 -->
+  <section class="cover" id="top" aria-label="표지">
+    <div class="field" id="field" aria-hidden="true">
+      <img class="rings" id="rings" src="assets/home/lens-rings.svg" alt="" width="1920" height="1080">
+      <img class="blade" src="assets/home/blade-1.svg" alt="" width="680" height="680">
+      <img class="blade" src="assets/home/blade-2.svg" alt="" width="680" height="680">
+      <img class="blade" src="assets/home/blade-3.svg" alt="" width="680" height="680">
+      <img class="blade" src="assets/home/blade-4.svg" alt="" width="680" height="680">
+      <img class="blade" src="assets/home/blade-5.svg" alt="" width="680" height="680">
+      <img class="blade" src="assets/home/blade-6.svg" alt="" width="680" height="680">
+      <img class="blade" src="assets/home/blade-7.svg" alt="" width="680" height="680">
+      <img class="blade" src="assets/home/blade-8.svg" alt="" width="680" height="680">
+      <div class="cross">
+        <img src="assets/home/crosshair-lines.svg" alt="" width="71" height="69" style="left:925px;top:507px">
+        <img src="assets/home/crosshair-dot.svg" alt="" width="10" height="10" style="left:955.3px;top:535.3px">
+      </div>
+    </div>
+    <h1 class="title cover__title">APERTURE.</h1>
+    <p class="discipline">INTERACTION &amp;<br>EXPERIENCE DESIGN</p>
+    <p class="cover__word title" aria-label="USER."><span class="w-user">USER.</span><span class="w-lab" aria-hidden="true">LAB.</span></p>
   </section>
 
-  <div class="rest">
-    <section id="profile"><h2>Profile</h2><p>자기소개는 다음 단계에서 채웁니다.</p></section>
-    <section id="contact"><h2>Contact</h2><p>연락처는 다음 단계에서 채웁니다.</p></section>
-  </div>
+  <!-- About Me -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <h2 class="title" id="about-title">ABOUT ME<span class="arrow" aria-hidden="true">↴</span></h2>
+    <div class="about__body">
+      <img class="about__photo" src="assets/home/profile.webp" alt="최승진 프로필 사진" width="405" height="506" loading="lazy">
+      <p class="about__quote">전에는 시안에 시선을 빼앗겼지만,<br>이제 사용자의 눈으로 본다.</p>
+      <div class="cv">
+        <section class="cv__group"><h3 class="cv__label">Education</h3>
+          <dl><div class="cv__row"><dt>2025.03 - 2027.02</dt><dd>계원예술대학교 디지털미디어디자인과 전문학사</dd></div></dl>
+        </section>
+        <section class="cv__group"><h3 class="cv__label">Awards</h3>
+          <dl>
+            <div class="cv__row"><dt>2026.7</dt><dd>커뮤니케이션 디자인 국제 어워드 특별상</dd></div>
+            <div class="cv__row"><dt>2026.11</dt><dd>계원조형예술제 PT상</dd></div>
+          </dl>
+        </section>
+        <section class="cv__group"><h3 class="cv__label">Activities</h3>
+          <dl>
+            <div class="cv__row"><dt>2026.09 - 2026.11</dt><dd>디지털미디어디자인과 졸업준비위원회 전시팀</dd></div>
+            <div class="cv__row"><dt>2026.12(예정)</dt><dd>한중 학생 디자인 작품 교류전 출품</dd></div>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects" aria-labelledby="projects-title">
+    <h2 class="title" id="projects-title">Projects. <span class="arrow" aria-hidden="true">↴</span></h2>
+    <div class="projects__body">
+      <div><button class="list-btn" id="listBtn" type="button" aria-pressed="false" aria-controls="track"><span id="listLabel">LIST</span><span aria-hidden="true">↗</span></button></div>
+      <div class="track-wrap">
+        <ul class="track" id="track" role="list">
+          <!-- ↗ 링크: 웹 쇼잉 URL이 생기면 href만 바꾸면 됩니다 -->
+          <li class="card card--malmoi">
+            <div class="card__cover" aria-hidden="true"><div class="ph ph--top">
+              <img class="ph__c1" src="assets/home/circle-outer.svg" alt="" style="left:calc(235.6 * var(--cu));top:calc(11.25 * var(--cu));width:calc(131.75 * var(--cu));height:calc(131.75 * var(--cu))">
+              <img class="ph__c2" src="assets/home/circle-inner.svg" alt="" style="left:calc(246.85 * var(--cu));top:calc(22.49 * var(--cu));width:calc(109.26 * var(--cu));height:calc(109.26 * var(--cu))">
+              <i class="ph__rule" style="top:calc(147.75 * var(--cu))"></i><span class="ph__tag">INTERACTIVE EXHIBITION</span><span class="ph__name ph__name--kr" style="top:calc(64.27 * var(--cu))">말모이</span>
+            </div></div>
+            <div class="card__body">
+              <h3 class="card__name">말모이</h3><div class="card__rule"></div>
+              <p class="card__desc">감정에 어울리는 말을 발견하는 인터랙티브 리듬게임.</p>
+              <p class="card__tag">INTERACTIVE EXHIBITION</p>
+            </div>
+            <a class="card__go" href="https://leeyoujoungg.github.io/Malmoi/" target="_blank" rel="noopener" aria-label="말모이 웹 쇼잉 새 탭에서 열기">↗</a>
+          </li>
+          <li class="card">
+            <div class="card__cover" aria-hidden="true"><div class="ph">
+              <img class="ph__c1" src="assets/home/circle-outer.svg" alt=""><img class="ph__c2" src="assets/home/circle-inner.svg" alt="">
+              <i class="ph__rule"></i><span class="ph__tag">VEHICLE GUI</span><span class="ph__name">RESQ LINK</span>
+            </div></div>
+            <div class="card__body">
+              <h3 class="card__name">RESQ LINK</h3><div class="card__rule"></div>
+              <p class="card__desc">재난 현장의 정보를 연결하는 응급의료 지원 차량 GUI.</p>
+              <p class="card__tag">VEHICLE GUI</p>
+            </div>
+            <span class="card__go" role="link" aria-disabled="true" title="웹 쇼잉 준비 중" aria-label="RESQ LINK 웹 쇼잉 준비 중">↗</span>
+          </li>
+          <li class="card">
+            <div class="card__cover" aria-hidden="true"><div class="ph">
+              <img class="ph__c1" src="assets/home/circle-outer.svg" alt=""><img class="ph__c2" src="assets/home/circle-inner.svg" alt="">
+              <i class="ph__rule"></i><span class="ph__tag">BRAND EXPERIENCE</span><span class="ph__name">PLAYBACK</span>
+            </div></div>
+            <div class="card__body">
+              <h3 class="card__name">LEGO PLAYBACK</h3><div class="card__rule"></div>
+              <p class="card__desc">옛 문방구의 기억을 되살리는 레고 팝업스토어 콘셉트.</p>
+              <p class="card__tag">BRAND EXPERIENCE</p>
+            </div>
+            <span class="card__go" role="link" aria-disabled="true" title="웹 쇼잉 준비 중" aria-label="LEGO PLAYBACK 웹 쇼잉 준비 중">↗</span>
+          </li>
+          <li class="card">
+            <div class="card__cover" aria-hidden="true"><div class="ph">
+              <img class="ph__c1" src="assets/home/circle-outer.svg" alt=""><img class="ph__c2" src="assets/home/circle-inner.svg" alt="">
+              <i class="ph__rule"></i><span class="ph__tag">APP RENEWAL</span><span class="ph__name">STARBUCKS</span>
+            </div></div>
+            <div class="card__body">
+              <h3 class="card__name">Starbucks UI/UX Renewal</h3><div class="card__rule"></div>
+              <p class="card__desc">주문부터 결제까지 하나의 흐름으로 정리한 앱 리뉴얼.</p>
+              <p class="card__tag">UI/UX APP RENEWAL</p>
+            </div>
+            <a class="card__go" href="starbucks/" target="_blank" rel="noopener" aria-label="Starbucks UI/UX Renewal 웹 쇼잉 새 탭에서 열기">↗</a>
+          </li>
+          <li class="card">
+            <div class="card__cover" aria-hidden="true"><div class="ph">
+              <img class="ph__c1" src="assets/home/circle-outer.svg" alt=""><img class="ph__c2" src="assets/home/circle-inner.svg" alt="">
+              <i class="ph__rule"></i><span class="ph__tag">DIGITAL HEALTHCARE</span><span class="ph__name">ANNYEONG WEG</span>
+            </div></div>
+            <div class="card__body">
+              <h3 class="card__name">Annyeong Weg</h3><div class="card__rule"></div>
+              <p class="card__desc">독일 한인의 건강한 일상을 돕는 헬스케어 커뮤니티.</p>
+              <p class="card__tag">DIGITAL HEALTHCARE</p>
+            </div>
+            <a class="card__go" href="annyeong-weg/" target="_blank" rel="noopener" aria-label="Annyeong Weg 웹 쇼잉 새 탭에서 열기">↗</a>
+          </li>
+          <li class="card">
+            <div class="card__cover" aria-hidden="true"><div class="ph">
+              <img class="ph__c1" src="assets/home/circle-outer.svg" alt=""><img class="ph__c2" src="assets/home/circle-inner.svg" alt="">
+              <i class="ph__rule"></i><span class="ph__tag">KIOSK SERVICE</span><span class="ph__name">NEXTREE</span>
+            </div></div>
+            <div class="card__body">
+              <h3 class="card__name">nexTree AI</h3><div class="card__rule"></div>
+              <p class="card__desc">키오스크 사용을 곁에서 돕는 AI 보조 서비스.</p>
+              <p class="card__tag">KIOSK SERVICE</p>
+            </div>
+            <a class="card__go" href="https://nextree.framer.website/" target="_blank" rel="noopener" aria-label="nexTree AI 웹 쇼잉 새 탭에서 열기">↗</a>
+          </li>
+        </ul>
+        <div class="arrows">
+          <button type="button" id="prev" aria-label="이전 프로젝트">←</button>
+          <button type="button" id="next" aria-label="다음 프로젝트">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div>
+      <p class="contact__name">CHOI SEUNGJIN</p>
+      <h2 class="title" id="contact-title">Contact.</h2>
+    </div>
+    <div class="contact__links">
+      <div><b>gmail</b><a class="mail" href="mailto:sjin.c.26@gmail.com">sjin.c.26@gmail.com</a></div>
+      <a class="be" href="https://www.behance.net/323e4701" target="_blank" rel="noopener">behance</a>
+    </div>
+    <a class="contact__arrow" href="https://www.behance.net/323e4701" target="_blank" rel="noopener" aria-label="Behance 새 탭에서 열기"><img src="assets/home/arrow-ne.svg" alt="" width="44" height="44"></a>
+  </section>
 </main>
-<section class="det" id="detail" hidden></section>
-<footer><span>SEUNGJIN</span><span>© 2026</span></footer>
+
+<a class="top-btn" href="#top" aria-label="맨 위로">TOP</a>
 
 <script>
 (function(){
-/* img에 이미지 경로를 넣으면 조리개가 열릴 때 썸네일이 보입니다 */
-const P=[
- {n:'Starbucks UI/UX Renewal',k:'UI/UX 앱 리뉴얼',d:'사용자 편의성을 기준으로 정보 구조와 디자인을 개선한 과정',f:1.4,img:'a/starbucks-thumb.webp',detail:Array.from({length:12},(_,k)=>`a/starbucks-${String(k+1).padStart(2,'0')}.webp`),link:'https://www.figma.com/design/4Fve1nJj3tCPYnxoaG8yBX/UI-UX-Design?node-id=361-5874&t=iTOTZvbuEux7PH4o-1'},
- {n:'RANGEYE',k:'인터랙션 디자인',d:'사용 환경과 목적을 고려해 인터페이스를 설계한 과정',f:2,img:'a/rangeye.webp',link:'https://www.figma.com/design/iXpC3Rr4YiVuh3e7ncasmg/%EC%9D%B8%ED%84%B0%EB%A0%89%EC%85%98-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%B3%B4%EB%93%9C?node-id=681-6710&t=POTXJ8hOKh0I3kk1-1'},
- {n:'LEGO PLAYBACK',k:'브랜딩 프로젝트',d:'브랜드 컨셉을 바탕으로 시각적 표현을 탐색하고 발전시킨 과정',f:2.8,img:''},
- {n:'말모이',k:'뉴미디어 프로젝트',d:'사용자 참여와 인터랙션을 고려해 시각적 요소와 경험을 설계한 과정',f:4,img:''},
- {n:'Typography Essay',k:'타이포그래피 웹사이트',d:'다양한 타이포그래피를 탐색하고 시각적 표현의 방향을 구체화한 과정',f:5.6,img:''},
- {n:'Icon Poster',k:'라인·아이소메트릭 아이콘 포스터',d:'형태와 표현 방식을 조정하며 일관된 시각 언어를 정리한 과정',f:8,img:''},
- {n:'nexTree AI',k:'키오스크 보조 서비스',d:'사용성을 기준으로 기능과 디자인 방향을 정리한 과정',f:11,img:''},
- {n:'Annyeong Weg',k:'디지털 헬스케어 커뮤니티',d:'사용자에게 필요한 정보를 선별하고 서비스 구조를 체계화한 과정',f:16,img:''}];
-const $=s=>document.querySelector(s),calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const TAU=Math.PI*2,lerp=(a,b,t)=>a+(b-a)*t;
-const ratio=f=>Math.min(.86,1/f*1.1);   /* 구경은 f값에 반비례 */
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* 조리개 날: 다각형 변을 접선으로 연장한 쐐기 9장 */
-function blades(c,x,y,R,r,rot,n=9){
-  if(!(R>0))return;
-  const V=[];for(let i=0;i<n;i++){const a=rot+TAU*i/n;V.push([x+r*Math.cos(a),y+r*Math.sin(a)])}
-  c.save();c.beginPath();c.arc(x,y,R,0,TAU);c.clip();
-  const far=R*4+r*4;
-  const ray=i=>{const A=V[i%n],B=V[(i+1)%n],L=Math.hypot(B[0]-A[0],B[1]-A[1])||1;return[B[0]+(B[0]-A[0])/L*far,B[1]+(B[1]-A[1])/L*far]};
-  for(let i=0;i<n;i++){
-    const A=V[(i+1)%n],B=V[(i+2)%n],F1=ray(i),F2=ray(i+1);
-    const g=c.createLinearGradient(A[0],A[1],lerp(A[0],F2[0],R/far),lerp(A[1],F2[1],R/far));
-    g.addColorStop(0,'#232322');g.addColorStop(1,'#080808');
-    c.fillStyle=g;c.beginPath();c.moveTo(A[0],A[1]);c.lineTo(B[0],B[1]);c.lineTo(F2[0],F2[1]);c.lineTo(F1[0],F1[1]);c.closePath();c.fill();
-    c.strokeStyle='rgba(255,255,255,.2)';c.lineWidth=Math.max(.6,R/500);c.beginPath();c.moveTo(A[0],A[1]);c.lineTo(F1[0],F1[1]);c.stroke();
+  /* 1920×1080 조리개 필드를 표지 크기에 맞춰 cover 배율로 */
+  var cover = document.querySelector('.cover'), field = document.getElementById('field');
+  function fit(){
+    var w = cover.clientWidth, h = cover.clientHeight;
+    /* 가로 화면은 1920×1080을 꽉 채우고, 세로(모바일) 화면은 조리개 지름(약 1040px)이 폭에 맞도록 */
+    var s = w/h >= 1.2 ? Math.max(w/1920, h/1080) : Math.max(w/1040, h*.5/1080);
+    field.style.setProperty('--fs', s);
   }
-  c.restore();
-}
-function rings(c,x,y,R,rot,fade){
-  if(fade<=.01)return;c.save();c.globalAlpha=fade;c.strokeStyle=c.fillStyle='#0c0c0c';c.lineCap='butt';
-  const circ=(k,w,d)=>{c.lineWidth=w;c.setLineDash(d||[]);c.beginPath();c.arc(x,y,R*k,0,TAU);c.stroke();c.setLineDash([])};
-  circ(1.035,1);circ(1.09,1.3,[1.5,7]);
-  const arc=(k,w,a,b)=>{c.lineWidth=w;c.beginPath();c.arc(x,y,R*k,rot+a,rot+b);c.stroke()};
-  arc(1.28,R*.085,2.05,3.05);arc(1.28,R*.085,4.05,4.55);arc(1.16,2,3.3,4);circ(1.4,.8);
-  /* f값 눈금 */
-  const F=['1.4','2','2.8','4','5.6','8','11','16'];
-  c.font=`300 ${Math.max(10,R*.034)}px "DM Mono",monospace`;c.textAlign='center';c.textBaseline='middle';
-  F.forEach((t,i)=>{const a=rot*-.6+Math.PI*.62+i*.26,px=x+Math.cos(a)*R*1.47,py=y+Math.sin(a)*R*1.47;
-    c.save();c.translate(px,py);c.rotate(a+Math.PI/2);c.fillText(t,0,0);c.restore()});
-  c.restore();
-}
-function small(c,x,y,R,rot,fade){
-  if(fade<=.01)return;c.save();c.globalAlpha=fade;c.strokeStyle='#0c0c0c';
-  [[1,.8],[.82,.8],[.62,1]].forEach(([k,w])=>{c.lineWidth=w;c.beginPath();c.arc(x,y,R*k,0,TAU);c.stroke()});
-  c.setLineDash([1.5,5]);c.beginPath();c.arc(x,y,R*.92,0,TAU);c.stroke();c.setLineDash([]);
-  c.lineWidth=R*.1;c.beginPath();c.arc(x,y,R*.72,rot+.5,rot+1.5);c.stroke();c.restore();
-}
+  fit(); addEventListener('resize', fit);
 
-/* 히어로 */
-const cv=$('#iris'),ctx=cv.getContext('2d'),hero=cv.parentElement,pin=$('#pin'),copy=$('#copy'),rev=$('#reveal'),stops=$('#stops'),read=$('#read');
-let W=0,H=0,DPR=1,cur=calm?ratio(4):.02,want=ratio(4),scrollP=0,raf=0;
-function size(){const r=hero.getBoundingClientRect();W=r.width;H=r.height;DPR=Math.min(devicePixelRatio||1,2);cv.width=W*DPR;cv.height=H*DPR;kick()}
-function frame(){raf=0;
-  cur+=(want-cur)*(calm?1:.09);
-  const p=scrollP,e=p*p*(3-2*p),m=W<=640;
-  const R0=m?W*.56:Math.min(H*.47,W*.28),cx0=m?W*.72:W*.84,cy0=m?H*.24:H*.5;
-  const diag=Math.hypot(W,H),holeEnd=diag*.72/.9;
-  const hole0=R0*cur,hole=lerp(hole0,holeEnd,e*e),R=Math.max(lerp(R0,holeEnd*1.2,e*e),hole/.86);
-  const cx=lerp(cx0,W/2,e),cy=lerp(cy0,H/2,e),rot=cur*-1.4-.3+e*2.2;
-  ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
-  const k=Math.max(0,1-p*2.6);
-  small(ctx,0,H*.78,Math.min(W,H)*.13,rot,m?0:k);
-  rings(ctx,cx,cy,R,rot,k);
-  blades(ctx,cx,cy,R,hole,rot);
-  if(k>0){ctx.save();ctx.globalAlpha=k;ctx.strokeStyle=ctx.fillStyle='#0c0c0c';ctx.lineWidth=1;const lx=cx-R*1.2;ctx.beginPath();ctx.moveTo(lx,cy);ctx.lineTo(cx-hole-2,cy);ctx.stroke();ctx.beginPath();ctx.arc(lx,cy,Math.max(5,R*.022),0,TAU);ctx.fill();ctx.restore()}
-  const t=Math.max(0,1-p*2.4);copy.style.opacity=t;stops.style.opacity=Math.max(0,1-p*4);stops.style.pointerEvents=p>.2?'none':'';
-  rev.style.opacity=Math.min(1,Math.max(0,(p-.35)*3));
-  if(Math.abs(want-cur)>.001)kick();
-}
-function kick(){if(!raf)raf=requestAnimationFrame(frame)}
-function onScroll(){const r=pin.getBoundingClientRect(),d=pin.offsetHeight-hero.offsetHeight;scrollP=d>0?Math.min(1,Math.max(0,-r.top/d)):0;kick()}
-if(calm)pin.style.height='auto';
-addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',()=>{size();onScroll()});
-if(window.ResizeObserver)new ResizeObserver(size).observe(hero);
+  /* 초점 파티클 32개 (43:1834–1865) */
+  var P=[[1371.56,644.19,0],[1375.79,737.55,1],[1321.42,810.31,0],[1254.13,867.65,0],[1178.69,909.49,0],[1114.78,981.1,0],[1023.93,992.14,0],[934.83,985.16,0],[849.38,959.7,1],[754.19,966.36,0],[681.3,909.42,0],[622.51,840.81,0],[579.51,763.79,0],[553.28,681.81,0],[495.56,605.36,0],[500.91,512.74,1],[526.67,428.46,0],[566.42,351.02,0],[580.17,255.3,0],[650.11,195.07,0],[728.71,150.91,0],[812.46,123.85,0],[896.24,112.61,1],[983.84,72.47,0],[1071.62,96.98,0],[1150.9,137.4,0],[1218.92,191.39,0],[1309.97,223.42,0],[1355.29,303.61,0],[1381.63,387.58,1],[1393.34,476.37,0],[1386.18,561.75,0]];
+  P.forEach(function(p){ var i=document.createElement('img'); i.className='particle'; i.alt=''; i.src='assets/home/particle-'+(p[2]?'l':'s')+'.svg';
+    var s=p[2]?5.5:2.4; i.style.cssText='left:'+p[0]+'px;top:'+p[1]+'px;width:'+s+'px;height:'+s+'px'; field.appendChild(i); });
 
-const DEF='조리개 값은 8개 프로젝트와 하나씩 연결됩니다. 값을 고르면 해당 작업으로 이동합니다.';read.textContent=DEF;
-P.forEach((x,i)=>{const b=document.createElement('button');b.textContent='f/'+x.f;b.setAttribute('aria-label',`f/${x.f} ${x.n}`);
-  const on=()=>{want=ratio(x.f);read.textContent=`${x.n} · ${x.k}`;[...stops.querySelectorAll('button')].forEach(o=>o.classList.toggle('on',o===b));kick()};
-  const off=()=>{want=ratio(4);read.textContent=DEF;b.classList.remove('on');kick()};
-  b.onmouseenter=on;b.onfocus=on;b.onmouseleave=off;b.onblur=off;
-  b.onclick=()=>$('#w'+i).scrollIntoView({behavior:calm?'auto':'smooth',block:'center'});stops.append(b)});
+  /* 조리개 모션: Iris(열림) → Rotate → Gathered(중앙) → Replay(열림)
+     값은 피그마 각 상태 프레임의 블레이드 중심·회전·불투명도 (Figma 회전 + = CSS 회전 −) */
+  var OPEN=[[134,16.2,24.06],[83.3,106.2,20.05],[-16.2,134,21.2],[-106.2,83.3,23.66],[-134,-16.2,24.06],[-83.3,-106.2,20.05],[16.2,-134,21.2],[106.2,-83.3,23.66]];
+  var ROT =[[56.6,6.8,10.31],[35.2,44.8,6.3],[-6.8,56.6,7.45],[-44.8,35.2,9.91],[-56.6,-6.8,10.31],[-35.2,-44.8,6.3],[6.8,-56.6,7.45],[44.8,-35.2,9.91]];
+  var T=function(v){return 'translate('+v[0]+'px,'+v[1]+'px) rotate('+(-v[2])+'deg)'};
+  var blades=[].slice.call(document.querySelectorAll('.blade'));
+  blades.forEach(function(b,i){ b.style.transform=T(OPEN[i]); b.style.opacity=.46; });
+  document.getElementById('rings').style.opacity=.86;
+  if(calm || !Element.prototype.animate) return;
 
-/* 작업 카드 */
-const grid=$('#grid');
-P.forEach((x,i)=>{const a=document.createElement('article');a.className='card';a.id='w'+i;
-  a.innerHTML=`<div class="num">${String(i+1).padStart(2,'0')}</div>
-  <div class="fstop"><span>f/${x.f}</span><span>Project</span></div>
-  <h3><a class="open" href="#work-${i+1}">${x.n}</a></h3>
-  <div class="slot">${x.img?`<img src="${x.img}" alt="${x.n} 대표 이미지" loading="lazy">`:'<span>이미지 준비 중</span>'}<canvas aria-hidden="true"></canvas></div>
-  <p class="kind">${x.k}</p><p class="desc">${x.d}</p>${x.link?`<a class="fig" href="${x.link}" target="_blank" rel="noopener">Figma에서 보기 <span>↗</span></a>`:''}`;
-  grid.append(a);
-  const c=a.querySelector('canvas'),g=c.getContext('2d');const rest=x.img?1.5:ratio(x.f);let v=rest,t=rest,run=0;
-  const draw=()=>{run=0;const r=c.getBoundingClientRect();if(!r.width)return;const d=Math.min(devicePixelRatio||1,2);
-    if(c.width!==Math.round(r.width*d)){c.width=Math.round(r.width*d);c.height=Math.round(r.height*d)}
-    v+=(t-v)*(calm?1:.14);g.setTransform(d,0,0,d,0,0);g.clearRect(0,0,r.width,r.height);
-    const R=Math.hypot(r.width,r.height)*.62,full=t>1,hole=v*R*.8;
-    blades(g,r.width/2,r.height/2,Math.max(R,hole*1.2),hole,-v*1.6,9);
-    if(Math.abs(t-v)>.004&&!run)run=requestAnimationFrame(draw)};
-  const go=o=>{if(x.img){if(!o||calm)return;v=.2;t=1.5}else t=o?1.5:ratio(x.f);if(!run)run=requestAnimationFrame(draw)};
-  a.onmouseenter=()=>go(1);a.onmouseleave=()=>go(0);a.addEventListener('focusin',()=>go(1));a.addEventListener('focusout',()=>go(0));
-  if(window.ResizeObserver)new ResizeObserver(()=>{if(!run)run=requestAnimationFrame(draw)}).observe(c);else draw();
-});
+  var D=7200, ease='cubic-bezier(.65,0,.35,1)';
+  blades.forEach(function(b,i){
+    b.animate([
+      {offset:0,   transform:T(OPEN[i]),  opacity:.46, easing:ease},
+      {offset:.12, transform:T(OPEN[i]),  opacity:.46, easing:ease},
+      {offset:.36, transform:T(ROT[i]),   opacity:.86, easing:ease},
+      {offset:.52, transform:T([0,0,0]),  opacity:1},
+      {offset:.78, transform:T([0,0,0]),  opacity:1, easing:ease},
+      {offset:1,   transform:T(OPEN[i]),  opacity:.46}
+    ],{duration:D,iterations:Infinity});
+  });
+  document.getElementById('rings').animate([{opacity:.86},{opacity:.86,offset:.12},{opacity:.92,offset:.36},{opacity:1,offset:.52},{opacity:1,offset:.78},{opacity:.86}],{duration:D,iterations:Infinity});
+  /* 하단 단어: 열림 USER. / 모임 LAB. */
+  var sw=[{opacity:1},{opacity:1,offset:.3},{opacity:0,offset:.36},{opacity:0,offset:.8},{opacity:1,offset:.86},{opacity:1}];
+  document.querySelector('.w-user').animate(sw,{duration:D,iterations:Infinity});
+  document.querySelector('.w-lab').animate(sw.map(function(k){return {opacity:1-k.opacity,offset:k.offset}}),{duration:D,iterations:Infinity});
+})();
 
-/* 앵커 이동 */
-const main=$('main'),det=$('#detail');let last=null,stageRun=0;
-function showDetail(i){const x=P[i],pre=P[(i+7)%8],nx=P[(i+1)%8];last=i;
-  det.innerHTML=`<div class="det-top"><div class="det-side"><div class="num">${String(i+1).padStart(2,'0')}</div><div style="display:flex;flex-direction:column;gap:6px"><span>f/${x.f}</span><a href="#works">← Works</a></div></div>
-  <div class="det-main"><h1>${x.n}</h1><p class="kind">${x.k}</p><p class="desc">${x.d}</p>${x.link?`<a class="fig" href="${x.link}" target="_blank" rel="noopener">Figma에서 보기 <span>↗</span></a>`:''}</div></div>
-  ${x.detail?`<div class="det-long" id="stage">${x.detail.map((u,k)=>`<img src="${u}" alt="${k?'':x.n+' 상세 디자인'}" ${k>1?'loading="lazy"':''}>`).join('')}<canvas aria-hidden="true"></canvas></div>`:`<div class="det-stage" id="stage"${x.img?' style="height:auto;aspect-ratio:1546/864"':''}>${x.img?`<img src="${x.img}" alt="${x.n} 대표 이미지">`:'<span>이미지 준비 중</span>'}<canvas aria-hidden="true"></canvas></div>`}
-  <div class="det-nav"><a href="#work-${(i+7)%8+1}"><small>Previous</small>${pre.n}</a><a href="#work-${(i+1)%8+1}"><small>Next</small>${nx.n}</a></div>`;
-  const st=$('#stage'),c=st.querySelector('canvas'),g=c.getContext('2d');let v=calm?ratio(x.f):.02,t=x.img?1.6:ratio(x.f);if(x.img&&calm){c.remove();return}
-  const draw=()=>{stageRun=0;const r=c.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);c.width=r.width*d;c.height=r.height*d;v+=(t-v)*(calm?1:.08);g.setTransform(d,0,0,d,0,0);
-    const R=Math.hypot(r.width,r.height)*.62,hole=v*R*.8;blades(g,r.width/2,r.height/2,Math.max(R,hole*1.2),hole,-v*1.6,9);if(Math.abs(t-v)>.003)stageRun=requestAnimationFrame(draw);else if(x.img)c.remove()};
-  if(!x.img){st.onmouseenter=()=>{t=1.5;if(!stageRun)draw()};st.onmouseleave=()=>{t=ratio(x.f);if(!stageRun)draw()}}cancelAnimationFrame(stageRun);draw()}
-function route(){const h=location.hash,m=/^#work-([1-8])$/.exec(h);
-  if(m){main.hidden=true;det.hidden=false;showDetail(+m[1]-1);scrollTo(0,0);return}
-  const was=det.hidden;main.hidden=false;det.hidden=true;size();onScroll();
-  const id=h.slice(1),el=id&&id!=='top'&&document.getElementById(id);
-  if(!was&&id==='works'&&last!==null){$('#w'+last).scrollIntoView({block:'center'})}
-  else if(el)el.scrollIntoView({behavior:was&&!calm?'smooth':'auto'});
-  else if(id==='top')scrollTo({top:0,behavior:was&&!calm?'smooth':'auto'})}
-addEventListener('hashchange',route);
-document.querySelectorAll('.nav a').forEach(l=>l.addEventListener('click',e=>{const t=l.getAttribute('href');if(location.hash===t){e.preventDefault();route()}}));
-size();onScroll();route();
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(kick);
+/* Projects: 화살표 스크롤 + LIST 보기 전환 */
+(function(){
+  var track=document.getElementById('track'), prev=document.getElementById('prev'), next=document.getElementById('next');
+  var btn=document.getElementById('listBtn'), label=document.getElementById('listLabel');
+  function step(){ var c=track.querySelector('.card'); return c ? c.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap||0) : 300; }
+  function sync(){ prev.disabled = track.scrollLeft <= 2; next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2; }
+  prev.addEventListener('click',function(){ track.scrollBy({left:-step(),behavior:'smooth'}); });
+  next.addEventListener('click',function(){ track.scrollBy({left: step(),behavior:'smooth'}); });
+  track.addEventListener('scroll',sync,{passive:true}); addEventListener('resize',sync); sync();
+  btn.addEventListener('click',function(){
+    var on = btn.getAttribute('aria-pressed') !== 'true';
+    btn.setAttribute('aria-pressed', on); track.classList.toggle('is-list', on);
+    label.textContent = on ? 'SLIDE' : 'LIST'; track.scrollLeft = 0; sync();
+  });
 })();
 </script>
-
+</body>
 </html>
